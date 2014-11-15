@@ -8,7 +8,7 @@ from flask.ext.login import login_required, login_user, current_user, logout_use
 from flask import render_template, request, jsonify, make_response, Response, flash, redirect, session, url_for, g
 from reminder.models import Base, User, Alias, Reminder
 from reminder import config
-from forms import LoginForm
+from forms import LoginForm, SignupForm
 
 from sqlalchemy import desc, and_
 from sqlalchemy.orm import load_only
@@ -48,7 +48,7 @@ def login():
 		user = db.session.query(User).filter_by(username=form.username.data).filter_by(password=form.pin.data).first()
 		if user is None:
 			flash('User does not exist, please register.')
-			return redirect(url_for('welcome'))
+			return redirect(url_for('signup'))
 
 		login_user(user)
 		flash(('Logged in successfully.'))
@@ -59,32 +59,34 @@ def login():
 @login_required
 def dashboard():
 	reminders = db.session.query(Reminder).filter_by(owner_id=g.user.id)
-	return render_template('dashboard.html', reminders=reminders)
+	return render_template('dashboard.html', user=g.user, reminders=reminders)
 
 @app.route('/')
 def home():
-	return render_template('home.html')
+	return render_template('home.html', user=g.user)
 
-@app.route('/welcome', methods=['GET'])
-def welcome():	
-	return render_template('welcome.html')
-
-
-@app.route('/welcome', methods=['POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
-	name = request.form['username']
-	phone = request.form['phone']
-	pin = request.form['pin']
+	if g.user is not None and g.user.is_authenticated():
+		return redirect(url_for('dashboard'))
 
-	try:
-		user_id = db.session.query(User).filter_by(username=name).first().id
-		print "error"
-		return jsonify(error="username already in use")
-	except AttributeError,e:
-		new_user = User(username=name, password=pin, phone=phone)
-		db.session.add(new_user)
-		db.session.commit()
+	form = SignupForm() if request.method == 'POST' else SignupForm(request.args)
+	if form.validate_on_submit():
+
+		user = db.session.query(User).filter_by(username=form.username.data).first()
+		if user:
+			flash(('Username already in use, please try again :('))
+			return redirect(url_for('signup'))
+		else:
+			new_user = User(username=form.username.data, password=form.pin.data,
+				phone=form.phone.data)
+			db.session.add(new_user)
+			db.session.commit()
+		flash(("Successfully registered! Please now login below!"))
 		return redirect(url_for('login'))
+	elif(form.errors):
+		flash((form.errors))
+	return render_template('signup.html', form=form)
 
 @app.route('/logout')
 def logout():

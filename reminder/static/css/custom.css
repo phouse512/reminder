@@ -26,25 +26,38 @@ body {
 }
 
 .signin-wrapper {
+	font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
     width: 400px;
     height: 400px;
-    background: white;
     top: 50%;
     left: 50%;
     position: absolute;
     margin:-200px 0 0 -200px;
+    color: white;
+}
+
+.signin-wrapper > form > .btn {
+	width: 50%;
+	background-color: rgb(44,62,80);
+	margin-top: 20px;
+}
+
+.signin-wrapper > form > .btn:hover {
+	background-color: rgb(76,105,135);
+	border: 1px solid rgb(44,62,80);
 }
 
 .minimal-input {
   padding: 10px;
   border: none;
-  border-bottom: solid 2px #c9c9c9;
+  border-bottom: solid 2px rgb(44,62,80);
   transition: border 0.3s;
+  background-color: rgb(24,188,156);
 }
 .minimal-input:focus,
 .minimal-input.focus {
-  border-bottom: solid 2px #969696;
+  border-bottom: solid 2px rgb(76,105,135);;
 }
 
 input:focus{
@@ -57,7 +70,29 @@ outline:none;
 	margin-top: 100px;
 	background: white;
 	border-radius: 5px;
-	border: 1px solid gray;
+	border: 1px solid rgb(76,105,135);
+	background-color: rgb(44,62,80);
+	color: white;
+	font-family: 'Open Sans', serif;
+}
+
+.dashboard-wrapper > hr {
+	margin-bottom: 0px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    white;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    white;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    white;
 }
 
 .dashboard-wrapper h4 {
@@ -73,10 +108,11 @@ outline:none;
 
 .home {
 	color: white;
-	margin-left: 75px;
+	margin-left: 25px;
 	top: 38px;
 	font-size: 35px;
 	position: relative;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .home:hover {
@@ -84,6 +120,16 @@ outline:none;
 	text-decoration: none;
 }
 
+.task {
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+	background-color: rgb(44,62,80);
+}
+
+.task-list {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
 .navbar-links {
 	position: relative;
 	top: 47px;
@@ -94,6 +140,7 @@ outline:none;
 .navbar-links a {
 	color: white;
 	margin-right: 10px;
+	font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -104,6 +151,10 @@ outline:none;
 
 .left-block, .right-block {
 	color: white;
+}
+
+.left-block {
+	border-right: 1px solid white;
 }
 
 .left-block > h2 {
@@ -117,4 +168,24 @@ outline:none;
 
 .left-block > h4 {
 	font-family: 'Open Sans', sans-serif;
+}
+
+.left-block > .btn {
+	background-color: rgb(44,62,80);
+	color: white;
+	margin-top: 50px;
+}
+
+.left-block > .btn:hover {
+	background-color: rgb(76,105,135);
+	border: 1px solid rgb(44,62,80);
+}
+
+.input-area {
+	margin: 10px;
+}
+
+.input-area button {
+	background-color: rgb(76,105,135);
+	border: 1px solid rgb(76,105,135);
 }
