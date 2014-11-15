@@ -55,3 +55,16 @@ function addReminder(description){
 		}
 	});
 }
+
+function deleteReminder(id){
+	$.ajax({
+		type: 'GET',
+		url: $SCRIPT_ROOT + '/delete_reminder/' + id,
+		success: function(data, textStatus, xhr){
+			console.log(data);
+			if(data.result == 'success'){
+				$("#task_" + id).slideUp('slow');
+			}
+		}
+	});
+}

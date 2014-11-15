@@ -104,11 +104,23 @@ def add_reminder():
 
 	return jsonify(result='success')
 
+@app.route('/delete_reminder/<reminder_id>', methods=['GET'])
+@login_required
+def delete_reminder(reminder_id):
+	reminder = db.session.query(Reminder).filter_by(id=reminder_id).filter_by(owner_id=g.user.id).first()
+	if reminder:
+		db.session.delete(reminder)
+		db.session.commit()
+		flash(("Successfully deleted your to-do item! Nice job finishing it :)"))
+		return jsonify(result='success')
+	else:
+		return jsonify(result='failure')
+
 
 @app.route('/_receive_text', methods=['GET', 'POST'])
 def receive_text():
 	resp = twilio.twiml.Response()
-	resp.redirect("http://enigmatic-falls-5410.herokuapp.com/_send_text")
+	resp.redirect("http://social-accountability.herokuapp.com/_send_text")
 	return str(resp)
 
 @app.route('/_send_text', methods=['POST'])

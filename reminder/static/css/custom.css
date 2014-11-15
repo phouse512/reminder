@@ -80,6 +80,10 @@ outline:none;
 	margin-bottom: 0px;
 }
 
+.dashboard-wrapper i {
+	cursor: pointer;
+}
+
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    white;
 }
@@ -124,6 +128,10 @@ outline:none;
 	font-family: 'Open Sans', sans-serif;
 	color: white;
 	background-color: rgb(44,62,80);
+}
+
+.task:hover {
+	background-color: rgb(76,105,135);
 }
 
 .task-list {

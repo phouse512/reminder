@@ -33,7 +33,8 @@
 		});
 
 		$(".task i").on('click', function(){
-			console.log($(this).parent().parent().html());
+			id = $(this).parent().parent().attr("id").substring(5);
+			deleteReminder(id);
 		});
 	});
 
