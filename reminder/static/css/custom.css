@@ -7,15 +7,8 @@ html, body {
 }
 
 body {
-	background-size: auto 100%;
-	background: #47b494; /* Old browsers */
-	background: -moz-linear-gradient(top, #47b494 0%, #22728e 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#47b494), color-stop(100%,#22728e)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #47b494 0%,#22728e 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #47b494 0%,#22728e 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #47b494 0%,#22728e 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #47b494 0%,#22728e 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47b494', endColorstr='#22728e',GradientType=0 ); /* IE6-9 */
+	background-color: rgb(24,188,156);
+	border-color: rgb(24,188,156);
 }
 
 .welcome-wrapper {
@@ -70,4 +63,58 @@ outline:none;
 .dashboard-wrapper h4 {
 	margin: 10px;
 	margin-top: 15px;
+}
+
+.blue-navbar {
+	height: 125px;
+	background-color: rgb(44,62,80);
+	border: 0px;
+}
+
+.home {
+	color: white;
+	margin-left: 75px;
+	top: 38px;
+	font-size: 35px;
+	position: relative;
+}
+
+.home:hover {
+	color: rgb(24,188,156);
+	text-decoration: none;
+}
+
+.navbar-links {
+	position: relative;
+	top: 47px;
+	font-size: 25px;
+	margin-right: 50px;
+}
+
+.navbar-links a {
+	color: white;
+	margin-right: 10px;
+}
+
+
+.navbar-links a:hover {
+	text-decoration: none;
+	color: rgb(24,188,156);
+}
+
+.left-block, .right-block {
+	color: white;
+}
+
+.left-block > h2 {
+	font-size: 40px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.left-block > h3 {
+	font-family: 'Josefin Slab', serif;
+}
+
+.left-block > h4 {
+	font-family: 'Open Sans', sans-serif;
 }

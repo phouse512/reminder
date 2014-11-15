@@ -61,6 +61,10 @@ def dashboard():
 	reminders = db.session.query(Reminder).filter_by(owner_id=g.user.id)
 	return render_template('dashboard.html', reminders=reminders)
 
+@app.route('/')
+def home():
+	return render_template('home.html')
+
 @app.route('/welcome', methods=['GET'])
 def welcome():	
 	return render_template('welcome.html')
@@ -92,7 +96,6 @@ def add_reminder():
 	owner_id = g.user.id
 	description = request.form['description']
 
-	print g.user.reminders
 	new_reminder = Reminder(owner_id=owner_id, description=description)
 	db.session.add(new_reminder)
 	db.session.commit()
