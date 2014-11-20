@@ -51,7 +51,7 @@ def login():
 			return redirect(url_for('signup'))
 
 		login_user(user)
-		flash(('Logged in successfully.'))
+		flash(('Logged in successfully. If you\'re confused on what to do, please click on the settings wheel above ^!'))
 		return redirect(url_for('dashboard'))
 	return render_template('login.html', form=form)
 	
@@ -91,6 +91,7 @@ def signup():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash(("Successfully logged out, please sign in below!"))
     return redirect(url_for('login'))
 
 @app.route('/_add_reminder', methods=['POST'])

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block settings %}
+<a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog"></i></a>
+{% endblock %}
+
 {% block content %}
 
 <div class="dashboard-wrapper">
@@ -23,6 +27,32 @@
 			<button id="addButton" class="btn btn-block btn-primary">Add</button>
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Introduction</h4>
+      </div>
+      <div class="modal-body">
+        <p>Hello, welcome to our service!! If you're confused or not certain where to begin, you're in the right place :)<p>
+
+        <p>Let's say you've already set up your tasks that you want to be reminded about.  You can now share this phone number and your username to anyone you'd like.</p>
+
+        <p>Have anyone send a text to the following number:</p>
+        <strong><samp>440-638-5597</samp></strong>
+
+        <p>With the body of the text as your username: <code>{{ g.user.username }}</code><p>
+
+        You'll get a message from them soon. In fact, you can test it on yourself! Text your username to the above phone number and you'll get reminded of a task from your own list :)
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
